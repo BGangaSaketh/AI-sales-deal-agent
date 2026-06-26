@@ -27,6 +27,7 @@ export function UserProfileMenu() {
 
   const handleLogout = () => {
     localStorage.removeItem("auth_token")
+    localStorage.removeItem("auth_user")
     logout()
     router.push("/login")
   }

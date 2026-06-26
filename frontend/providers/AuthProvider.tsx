@@ -18,16 +18,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token")
+    const savedUserJson = localStorage.getItem("auth_user")
     if (token) {
-      // Mock validation, in prod we would query api/v1/auth/me
-      const mockUser = {
+      let activeUser = {
         id: "e654dfaf-efc0-4d54-9588-58754ac48488",
         email: "alexander.sterling@enterprise.ai",
         full_name: "Alexander Sterling",
         avatar_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=256&h=256",
         role: "SaaS Executive"
       }
-      login(mockUser)
+      if (savedUserJson) {
+        try {
+          activeUser = JSON.parse(savedUserJson)
+        } catch (e) {
+          console.error("Failed to parse saved user JSON:", e)
+        }
+      }
+      login(activeUser)
     } else {
       logout()
     }

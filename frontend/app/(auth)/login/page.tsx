@@ -44,14 +44,21 @@ export default function Login() {
       // For Phase 1 foundation: Mocking API auth delay
       await new Promise((resolve) => setTimeout(resolve, 1000))
       
-      localStorage.setItem("auth_token", "mock-jwt-token-xyz-12345")
-      login({
+      const email = data.email
+      const nameParts = email.split("@")[0].split(/[\._\-]/)
+      const parsedName = nameParts.map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(" ")
+
+      const loggedUser = {
         id: "e654dfaf-efc0-4d54-9588-58754ac48488",
-        email: data.email,
-        full_name: "Alexander Sterling",
-        avatar_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=256&h=256",
+        email: email,
+        full_name: parsedName || "User",
+        avatar_url: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(parsedName || "User")}`,
         role: "SaaS Executive",
-      })
+      }
+
+      localStorage.setItem("auth_token", "mock-jwt-token-xyz-12345")
+      localStorage.setItem("auth_user", JSON.stringify(loggedUser))
+      login(loggedUser)
       router.push("/dashboard")
     } catch (err) {
       setError("Invalid credentials. Try guest account credentials.")
@@ -63,14 +70,16 @@ export default function Login() {
   const handleGuestLogin = () => {
     setIsLoading(true)
     setTimeout(() => {
-      localStorage.setItem("auth_token", "mock-jwt-token-xyz-12345")
-      login({
+      const loggedUser = {
         id: "e654dfaf-efc0-4d54-9588-58754ac48488",
         email: "alexander.sterling@enterprise.ai",
         full_name: "Alexander Sterling",
         avatar_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=256&h=256",
         role: "SaaS Executive",
-      })
+      }
+      localStorage.setItem("auth_token", "mock-jwt-token-xyz-12345")
+      localStorage.setItem("auth_user", JSON.stringify(loggedUser))
+      login(loggedUser)
       router.push("/dashboard")
       setIsLoading(false)
     }, 800)
