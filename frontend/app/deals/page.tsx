@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { useAppStore, Deal } from "@/lib/store"
+import { formatDualCurrency, formatInr } from "@/lib/currency"
 import { Skeleton } from "@/components/feedback/Skeleton"
 import { EmptyState } from "@/components/feedback/EmptyState"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
@@ -240,7 +241,7 @@ export default function Deals() {
                   <div>
                     <h3 className="text-xs font-extrabold tracking-wide uppercase">{stage}</h3>
                     <span className="text-[10px] text-muted-foreground mt-0.5 block">
-                      ${stageTotalValue.toLocaleString()}
+                      {formatDualCurrency(stageTotalValue)}
                     </span>
                   </div>
                   <Badge variant="secondary" className="text-[9px] px-1.5 h-4">
@@ -267,7 +268,7 @@ export default function Deals() {
                       </div>
 
                       <div className="flex items-center justify-between border-t border-border/20 pt-2.5">
-                        <span className="text-xs font-extrabold">${deal.value.toLocaleString()}</span>
+                        <span className="text-xs font-extrabold">{formatDualCurrency(deal.value)}</span>
                         <div className="flex items-center gap-1">
                           {deal.riskCount > 0 && (
                             <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping" />
@@ -320,7 +321,7 @@ export default function Deals() {
                         </Link>
                       </TableCell>
                       <TableCell className="text-xs">{deal.customer}</TableCell>
-                      <TableCell className="text-xs font-semibold">${deal.value.toLocaleString()}</TableCell>
+                      <TableCell className="text-xs font-semibold">{formatDualCurrency(deal.value)}</TableCell>
                       <TableCell>
                         <Badge className={getStageColor(deal.stage)}>{deal.stage}</Badge>
                       </TableCell>
@@ -389,6 +390,11 @@ export default function Deals() {
                     placeholder="e.g. 500000"
                     required
                   />
+                  {dealValue && !isNaN(Number(dealValue)) && (
+                    <p className="text-[10px] text-muted-foreground mt-1">
+                      Equivalent: <span className="font-semibold">{formatInr(Number(dealValue))}</span>
+                    </p>
+                  )}
                 </div>
                 <div className="space-y-1">
                   <label className="text-[10px] uppercase font-bold text-muted-foreground">Target Close Date</label>

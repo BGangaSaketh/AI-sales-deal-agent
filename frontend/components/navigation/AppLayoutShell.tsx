@@ -331,7 +331,7 @@ export function AppLayoutShell({ children }: AppLayoutShellProps) {
         <Topbar />
         
         {/* Main Workspace Area */}
-        <main className="flex-1 p-6 md:p-8 overflow-y-auto max-w-7xl w-full mx-auto pb-24">
+        <main className="flex-1 p-5 md:p-6 overflow-y-auto max-w-7xl w-full mx-auto pb-20">
           <div key={pathname} className="page-enter">
             {children}
           </div>

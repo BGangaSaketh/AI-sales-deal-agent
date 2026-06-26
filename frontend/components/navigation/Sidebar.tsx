@@ -84,7 +84,7 @@ export function Sidebar() {
               key={item.name}
               href={item.href}
               className={cn(
-                "group flex items-center gap-3 rounded-md px-3 py-2 text-xs font-semibold transition-all duration-150 relative",
+                "group flex items-center gap-3.5 rounded-md px-3 py-2 text-xs font-semibold transition-all duration-150 relative",
                 isActive
                   ? "bg-primary text-primary-foreground shadow"
                   : "text-muted-foreground hover:bg-secondary hover:text-foreground",
@@ -92,7 +92,7 @@ export function Sidebar() {
               )}
             >
               <div className="relative shrink-0 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-6">
-                <Icon className={cn("h-4 w-4", item.isAi && !isActive && "text-ai")} />
+                <Icon className={cn("h-[18px] w-[18px]", item.isAi && !isActive && "text-ai")} />
                 {item.isAi && (
                   <span className="absolute -top-1 -right-1 h-1.5 w-1.5 rounded-full bg-ai animate-pulse" />
                 )}
@@ -100,7 +100,7 @@ export function Sidebar() {
               {sidebarOpen && <span className="truncate">{item.name}</span>}
               {sidebarOpen && item.isAi && (
                 <span className={cn(
-                  "ml-auto rounded px-1 py-0.5 text-[8px] font-bold border transition-all",
+                  "ml-auto rounded px-1 py-0.5 text-[9px] font-bold border transition-all",
                   isActive
                     ? "bg-white text-ai border-white/20"
                     : "bg-ai/10 text-ai border-ai/10"

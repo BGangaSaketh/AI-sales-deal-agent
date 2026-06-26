@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { formatDualCurrency } from "@/lib/currency"
 import { useAppStore } from "@/lib/store"
 import {
   BarChart3,
@@ -52,11 +53,7 @@ export default function Analytics() {
   const winRate = deals.length > 0 ? (wonDeals.length / deals.length) * 100 : 0
 
   const formatCurrency = (val: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    }).format(val)
+    return formatDualCurrency(val)
   }
 
   // 1. Pipeline value by stage

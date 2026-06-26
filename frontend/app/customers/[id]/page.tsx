@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { useAppStore, Customer, Deal } from "@/lib/store"
+import { formatDualCurrency } from "@/lib/currency"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -430,7 +431,7 @@ export default function CustomerDetails() {
                   <CardContent className="text-xs space-y-2">
                     <div className="flex items-center justify-between text-muted-foreground">
                       <span>Value:</span>
-                      <span className="font-bold text-foreground">${deal.value.toLocaleString()}</span>
+                      <span className="font-bold text-foreground">{formatDualCurrency(deal.value)}</span>
                     </div>
                   </CardContent>
                 </Card>

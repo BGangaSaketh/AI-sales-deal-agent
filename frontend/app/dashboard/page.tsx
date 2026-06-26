@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { useAppStore, Deal, Customer, Meeting, TaskItem } from "@/lib/store"
+import { formatDualCurrency } from "@/lib/currency"
 import { Skeleton } from "@/components/feedback/Skeleton"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -90,11 +91,7 @@ export default function Dashboard() {
   const activeTasks = tasks.filter((t) => !t.completed).slice(0, 4)
 
   const formatCurrency = (val: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    }).format(val)
+    return formatDualCurrency(val)
   }
 
   const handleAddTask = (e: React.FormEvent) => {

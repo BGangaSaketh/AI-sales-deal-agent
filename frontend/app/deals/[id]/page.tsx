@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { useAppStore, Deal, DealIntelligence, Objection } from "@/lib/store"
+import { formatDualCurrency, formatInr } from "@/lib/currency"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -171,7 +172,7 @@ export default function DealDetails() {
               </Badge>
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              Account: {deal.customer} • Value: ${deal.value.toLocaleString()}
+              Account: {deal.customer} • Value: {formatDualCurrency(deal.value)}
             </p>
           </div>
         </div>
@@ -264,7 +265,7 @@ export default function DealDetails() {
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                   <div>
                     <span className="text-[10px] uppercase font-bold text-muted-foreground block">Deal Value</span>
-                    <span className="font-bold text-foreground text-sm">${deal.value.toLocaleString()}</span>
+                    <span className="font-bold text-foreground text-sm">{formatDualCurrency(deal.value)}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2.5 text-xs">
@@ -685,6 +686,11 @@ export default function DealDetails() {
                 <div className="space-y-1">
                   <label className="text-[10px] uppercase font-bold text-muted-foreground">Value ($)</label>
                   <Input type="number" value={editValue} onChange={(e) => setEditValue(Number(e.target.value))} required />
+                  {editValue !== undefined && editValue !== null && !isNaN(Number(editValue)) && (
+                    <p className="text-[10px] text-muted-foreground mt-1">
+                      Equivalent: <span className="font-semibold">{formatInr(Number(editValue))}</span>
+                    </p>
+                  )}
                 </div>
                 <div className="space-y-1">
                   <label className="text-[10px] uppercase font-bold text-muted-foreground">Close Target Date</label>
@@ -800,7 +806,7 @@ export default function DealDetails() {
           </div>
           <div>
             <span className="text-[9px] font-bold text-gray-400 uppercase block">Deal Contract Value</span>
-            <span className="font-semibold text-gray-900">${deal.value.toLocaleString()}</span>
+            <span className="font-semibold text-gray-900">{formatDualCurrency(deal.value)}</span>
           </div>
           <div>
             <span className="text-[9px] font-bold text-gray-400 uppercase block">Pipeline Stage</span>

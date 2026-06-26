@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAppStore, Customer, Deal, Meeting, Objection, DealIntelligence } from "@/lib/store"
+import { formatDualCurrency } from "@/lib/currency"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -389,7 +390,7 @@ export default function MemoryIntelligence() {
                           {deal.name}
                         </Link>
                         <Badge variant="secondary">{deal.stage}</Badge>
-                        <Badge variant="outline" className="text-[9px]">Value: ${deal.value.toLocaleString()}</Badge>
+                        <Badge variant="outline" className="text-[9px]">Value: {formatDualCurrency(deal.value)}</Badge>
                       </div>
 
                       <p className="text-muted-foreground text-[11px] leading-relaxed max-w-xl">
