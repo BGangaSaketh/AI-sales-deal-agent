@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+sqlalchemy
+pg8000
+python-dotenv
+python-multipart

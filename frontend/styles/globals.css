@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --card-border: #e2e8f0;
+
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+
+    --primary: #2F6F5E;
+    --primary-foreground: #ffffff;
+
+    --secondary: #f1f5f9;
+    --secondary-foreground: #0f172a;
+
+    --muted: #64748b;
+    --muted-foreground: #94a3b8;
+
+    --accent: #f8fafc;
+    --accent-foreground: #0f172a;
+
+    --ai: #7c3aed;
+    --ai-foreground: #ffffff;
+    --ai-glow: rgba(124, 58, 237, 0.15);
+
+    --gold: #d97706;
+    --gold-foreground: #ffffff;
+
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #2F6F5E;
+
+    --radius: 12px;
+
+    --font-inter: 'Inter', sans-serif;
+    --font-plus-jakarta: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .dark {
+    --background: #070913;
+    --foreground: #D1D5DB;
+
+    --card: rgba(13, 17, 33, 0.6);
+    --card-foreground: #D1D5DB;
+    --card-border: rgba(255, 255, 255, 0.08);
+
+    --popover: #0d1121;
+    --popover-foreground: #D1D5DB;
+
+    --primary: #2F6F5E;
+    --primary-foreground: #ffffff;
+
+    --secondary: rgba(255, 255, 255, 0.04);
+    --secondary-foreground: #D1D5DB;
+
+    --muted: #6B7280;
+    --muted-foreground: #9CA3AF;
+
+    --accent: rgba(255, 255, 255, 0.03);
+    --accent-foreground: #D1D5DB;
+
+    --ai: #8b5cf6;
+    --ai-foreground: #ffffff;
+    --ai-glow: rgba(139, 92, 246, 0.25);
+
+    --gold: #fbbf24;
+    --gold-foreground: #1e1b4b;
+
+    --border: rgba(255, 255, 255, 0.08);
+    --input: rgba(255, 255, 255, 0.05);
+    --ring: #2F6F5E;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-300;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+/* Glassmorphism utility for Dark Mode */
+.glass-panel {
+  backdrop-filter: blur(12px);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+}
+
+.dark .glass-panel {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: linear-gradient(
+    135deg,
+    rgba(13, 17, 33, 0.7) 0%,
+    rgba(7, 9, 19, 0.8) 100%
+  );
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Shimmer loader keyframes */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Caret blinking keyframes */
+@keyframes caret {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.animate-caret {
+  animation: caret 0.8s infinite;
+}
+
+/* Route page smooth fade-in */
+.page-enter {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark Mode High-Contrast Typography Hierarchy Overrides */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6, .dark .font-bold.text-foreground {
+  color: #F3F4F6 !important;
+}
+
+.dark .text-foreground {
+  color: #D1D5DB !important;
+}
+
+.dark .text-muted-foreground {
+  color: #9CA3AF !important;
+}
+
+/* Secondary Text Overrides */
+.dark .text-slate-400,
+.dark .text-zinc-400,
+.dark .text-gray-400,
+.dark .text-neutral-400 {
+  color: #9CA3AF !important;
+}
+
+/* Muted Text Overrides */
+.dark .text-slate-500,
+.dark .text-zinc-500,
+.dark .text-gray-500,
+.dark .text-neutral-500 {
+  color: #6B7280 !important;
+}
+
+/* Body Text Overrides */
+.dark .text-slate-300,
+.dark .text-zinc-300,
+.dark .text-gray-300,
+.dark .text-neutral-300 {
+  color: #D1D5DB !important;
+}
+
+/* Highlight Headings Overrides */
+.dark .text-slate-100,
+.dark .text-zinc-100,
+.dark .text-gray-100,
+.dark .text-neutral-100,
+.dark .text-white {
+  color: #F3F4F6 !important;
+}
+
+
