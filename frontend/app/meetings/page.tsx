@@ -331,7 +331,7 @@ export default function Meetings() {
                 <div>
                   <CalendarIcon className="h-8 w-8 text-muted-foreground mx-auto mb-2 opacity-50" />
                   <p className="font-semibold text-foreground">{calendarMode.toUpperCase()} Scheduling Grid</p>
-                  <p className="mt-1">Active sync interface is standard in Month view for hackathon demonstration purposes.</p>
+                  <p className="mt-1">Active sync interface is standard in Month view for demonstration purposes.</p>
                 </div>
               </div>
             )}

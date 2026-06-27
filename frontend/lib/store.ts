@@ -1381,8 +1381,8 @@ export const useAppStore = create<AppState>((set) => ({
     const resetActivity: ActivityItem = {
       id: `a-reset-${Date.now()}`,
       type: "System",
-      title: "Demo Swarm Pipeline Reset",
-      description: "Demo database reset to pre-processed scheduled states. Ready for Whisper STT sync simulation.",
+      title: "AI Workflow Reset",
+      description: "AI workflow database reset to pre-processed scheduled states. Ready for Whisper STT sync simulation.",
       time: new Date().toISOString()
     }
     const updatedActivities = [resetActivity, ...useAppStore.getState().activities]
@@ -1611,8 +1611,8 @@ export const useAppStore = create<AppState>((set) => ({
     const seedActivity: ActivityItem = {
       id: `a-seed-${Date.now()}`,
       type: "System",
-      title: "Premium Dataset Loaded",
-      description: "Rich historical CRM records, swarming terminal logs, and playbook summaries seeded into demo.",
+      title: "Enterprise Dataset Loaded",
+      description: "Rich historical CRM records, swarming terminal logs, and playbook summaries seeded into workspace.",
       time: new Date().toISOString()
     }
     const updatedActivities = [seedActivity, ...useAppStore.getState().activities]

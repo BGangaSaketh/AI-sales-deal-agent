@@ -142,11 +142,11 @@ export default function Dashboard() {
           <div className="flex items-center gap-2">
             <span className="flex h-2 w-2 rounded-full bg-ai animate-ping" />
             <h3 className="text-xs font-bold uppercase tracking-wider text-ai flex items-center gap-1">
-              <Sliders className="h-3.5 w-3.5" /> Hackathon Showcase Demo Controller
+              <Sliders className="h-3.5 w-3.5" /> Demo Control Center
             </h3>
           </div>
           <p className="text-[11px] text-muted-foreground leading-normal">
-            Seed high-fidelity records for live showcases, or reset the pipeline to run the speech-to-text swarming simulation from scratch.
+            Manage demonstration data, reset AI workflows, or populate the workspace with realistic enterprise scenarios.
           </p>
         </div>
 
@@ -156,24 +156,24 @@ export default function Dashboard() {
             size="sm"
             onClick={() => {
               resetDemoPipeline()
-              setDemoNotification("Demo pipeline reset successfully! Go to the Meetings page and click 'Run AI Swarm' to process Whisper STT in real-time.")
+              setDemoNotification("AI workflow reset successfully! Go to the Meetings page and click 'Run Swarm Orchestration' to process Whisper STT in real-time.")
               setTimeout(() => setDemoNotification(null), 6000)
             }}
             className="h-8 text-[10px] font-semibold flex items-center gap-1.5 border-border/80"
           >
-            <RefreshCw className="h-3 w-3 text-muted-foreground" /> Reset Demo Swarm
+            <RefreshCw className="h-3 w-3 text-muted-foreground" /> Reset AI Workflow
           </Button>
           <Button
             variant="premium"
             size="sm"
             onClick={() => {
               loadPremiumDataset()
-              setDemoNotification("Premium dataset loaded successfully! All dashboard cards, competitor SWOT, risk timelines, and terminal logs are populated.")
+              setDemoNotification("Enterprise dataset loaded successfully! All dashboard cards, competitor SWOT, risk timelines, and terminal logs are populated.")
               setTimeout(() => setDemoNotification(null), 6000)
             }}
             className="h-8 text-[10px] font-semibold flex items-center gap-1.5"
           >
-            <Play className="h-3 w-3" /> Seed Premium Dataset
+            <Play className="h-3 w-3" /> Load Enterprise Dataset
           </Button>
         </div>
 
