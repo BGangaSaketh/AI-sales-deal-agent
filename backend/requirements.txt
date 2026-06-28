@@ -6,3 +6,5 @@ sqlalchemy
 pg8000
 python-dotenv
 python-multipart
+openai
+google-generativeai

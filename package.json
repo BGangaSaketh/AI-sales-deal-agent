@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "install:all": "npm install --prefix frontend",
+    "setup": "node scripts/setup.js",
     "dev:frontend": "npm run dev --prefix frontend",
     "build:frontend": "npm run build --prefix frontend",
     "start:frontend": "npm run start --prefix frontend",
-    "dev:backend": "cd backend && .venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000"
+    "dev:backend": "node scripts/start-backend.js"
   },
   "keywords": [
     "crm",
