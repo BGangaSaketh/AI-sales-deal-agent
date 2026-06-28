@@ -1,0 +1,22 @@
+{
+  "name": "ai-sales-deal-agent-monorepo",
+  "version": "1.0.0",
+  "description": "AI Sales Deal Intelligence Agent - Monorepo root configuration",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix frontend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend",
+    "start:frontend": "npm run start --prefix frontend",
+    "dev:backend": "cd backend && .venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000"
+  },
+  "keywords": [
+    "crm",
+    "ai",
+    "fastapi",
+    "nextjs",
+    "supabase"
+  ],
+  "author": "",
+  "license": "ISC"
+}
